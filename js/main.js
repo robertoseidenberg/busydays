@@ -1,5 +1,7 @@
-mode   = "dark"
+mode   = "light"
 lastid = "sunbath"
+lastfeatureid = "monthlycalendar"
+lastsimplefeatureid = "widget"
 
 $(document).ready(function() {
 
@@ -8,10 +10,10 @@ $(document).ready(function() {
 
 	dh = h * window.devicePixelRatio;
 	aa = h * 0.7
-	$("img").css("height", h * 0.7);
+	// $("img").css("height", h * 0.7);
 
 	if (w < 400) {
-		$("img").css("height", h * 0.8);
+		$("#phoneimage").css("height", h * 0.8);
 	 	updateCSSForMobile();
 	}
 
@@ -33,12 +35,27 @@ $(document).ready(function() {
 			Cookies.set('lastid', lastid);
 		}
 
-		updateItems(lastid, mode);
+		updateThemeItems(lastid, mode);
+		updateFeatureItems(lastfeatureid, mode, lastid);
     	return false;
 	});
 
-	updateMode(mode)
-	updateItems(lastid, mode);
+	$(".featureitem").click(function(){
+		lastfeatureid = this.id;
+		updateFeatureItems(lastfeatureid, mode, lastid);
+    	return false;
+	});
+
+	$(".simplefeatureitem").click(function(){
+		lastsimplefeatureid = this.id;
+		updateSimpleFeatureItems(lastsimplefeatureid);
+    	return false;
+	});
+
+	updateMode(mode);
+	updateThemeItems(lastid, mode);
+	updateFeatureItems(lastfeatureid, mode, lastid);
+	updateSimpleFeatureItems(lastsimplefeatureid);
 });
 
 function updateCSSForMobile() {
@@ -54,8 +71,6 @@ function updateCSSForMobile() {
 	$(".themeitem").css("min-width", "30vw");
 
 	$("#homelink").css("font-size", "28px").css("padding-bottom", "0px");
-
-	$("#hero").html("A <b>straightforward</b> and <b>frictionless time tracker</b><br> that is <b>fun to use</b><br>and handles the<br>chores for you");
 }
 
 function updateMode(mode) {
@@ -63,11 +78,11 @@ function updateMode(mode) {
 	else				{ $("#mode").text("🌝 Light mode").css("background-color", "#FBFAFA"); }
 }
 
-function updateItems(id, mode) {
+function updateThemeItems(id, mode) {
 
-	$("#phoneimage").attr("src", path(id, mode));
+	$("#phoneimage").attr("src", heropath(id, mode));
 
-	["#sunbath", "#toychest", "#paintpot", "#pencilbox", "#chalkhill", "#finedust", "#coalmine"].forEach(function (item, index) {
+	["#sunbath", "#toychest", "#paintpot", "#pencilbox", "#chalkhill", "#keep", "#finedust", "#coalmine"].forEach(function (item, index) {
 		$(item).css("border", "1px solid #EDEDED");
 	});
 
@@ -98,6 +113,11 @@ function updateItems(id, mode) {
 		$('#frictionless').css("backgroundColor", "#f497aa").css("color", "white");
 		$('#ubiquitous')  .css("backgroundColor", "#f9b48a").css("color", "white");
 		$('#friendly')	  .css("backgroundColor", "#87b8e1").css("color", "white");
+	} else if (id == "keep") {
+		$('#succinct')	  .css("backgroundColor", "#f28b84").css("color", "#444");
+		$('#frictionless').css("backgroundColor", "#cdff90").css("color", "#444");
+		$('#ubiquitous')  .css("backgroundColor", "#aec9fa").css("color", "#444");
+		$('#friendly')	  .css("backgroundColor", "#fff476").css("color", "#444");
 	} else if (id == "finedust") {
 		$('#succinct')	  .css("backgroundColor", "#ae6177").css("color", "white");
 		$('#frictionless').css("backgroundColor", "#7096a7").css("color", "white");
@@ -111,6 +131,34 @@ function updateItems(id, mode) {
 	}
 }
 
-function path(name, mode) {
-	return "assets/phone_" + name + "_" + mode + ".jpg";
+function updateFeatureItems(id, mode, theme) {
+
+	$("#featurephoneimage").attr("src", featurepath(id, mode, theme));
+
+	["monthlycalendar", "timer", "tasks", "projects", "clients"].forEach(function (item, index) {
+		$("#" + item).css("border", "1px solid #EDEDED");
+	});
+
+	$("#"+id).css("border", "1px dashed #DD4C4F");
+}
+
+function updateSimpleFeatureItems(id) {
+
+	console.log("assets/features/" + id + "/phone.jpg")
+
+	$(".simlefeature").attr("src", "assets/features/" + id + "/phone.jpg");
+
+	["widget", "timesheets", "backup", "print", "export"].forEach(function (item, index) {
+		$("#" + item).css("border", "1px solid #EDEDED");
+	});
+
+	$("#"+id).css("border", "1px dashed #DD4C4F");
+}
+
+function heropath(name, mode) {
+	return "assets/hero/" + mode + "/" + name + ".jpg";
+}
+
+function featurepath(name, mode, theme) {
+	return "assets/features/" + name + "/" + mode + "/" + theme + ".jpg";
 }
