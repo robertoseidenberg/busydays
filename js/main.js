@@ -71,7 +71,7 @@ function updateBlackbar(isHidden) {
 	if (isHidden) {
 		$(".blackbar").css("background-color", "white");
 	} else {
-		$(".blackbar").css("background-color", "black");
+		$(".blackbar").css("background-color", "#fafafa");
 	}
 
 
