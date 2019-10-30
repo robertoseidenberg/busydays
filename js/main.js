@@ -1,4 +1,4 @@
-mode   = "light"
+mode   = "modemedium"
 lastid = "sunbath"
 lastfeatureid = "monthlycalendar"
 lastsimplefeatureid = "widget"
@@ -25,14 +25,10 @@ $(document).ready(function() {
 
 	$(".themeitem").click(function(){
 
-		if (this.id == "mode") {
-			mode == "light" ? mode = "dark" : mode = "light";
-			Cookies.set('mode', mode);
-			updateMode(mode);
+		if ((this.id == "modelight") || (this.id == "modedark") || (this.id == "modemedium")) {
+			Cookies.set('mode', this.id);
+			updateMode(this.id);
 
-		} else {
-			lastid = this.id
-			Cookies.set('lastid', lastid);
 		}
 
 		updateThemeItems(lastid, mode);
@@ -56,7 +52,35 @@ $(document).ready(function() {
 	updateThemeItems(lastid, mode);
 	updateFeatureItems(lastfeatureid, mode, lastid);
 	updateSimpleFeatureItems(lastsimplefeatureid);
+
+	updateBlackbar()
 });
+
+$(window).on('resize', function(){
+      updateBlackbar(false);
+});
+
+function updateBlackbar(isHidden) {
+
+	var phone = $("#phoneimage");
+	var top = phone.offset().top;
+	var height = phone.height();
+	var topbar = height * 0.283;
+
+
+	if (isHidden) {
+		$(".blackbar").css("background-color", "white");
+	} else {
+		$(".blackbar").css("background-color", "#fafafa");
+	}
+
+
+	$(".blackbar").css("left", 0);
+	$(".blackbar").css("width", window.innerWidth);
+	$(".blackbar").css("height", top + topbar);
+	$(".blackbar").css("z-index", -1);
+
+}
 
 function updateCSSForMobile() {
 
@@ -74,8 +98,10 @@ function updateCSSForMobile() {
 }
 
 function updateMode(mode) {
-	if (mode == "dark") { $("#mode").text("🌚 Dark mode") .css("background-color", "#FBFAFA"); }
-	else				{ $("#mode").text("🌝 Light mode").css("background-color", "#FBFAFA"); }
+	if      (mode == "modelight" ) { updateBlackbar(false); }
+	else if	(mode == "modedark"  ) { updateBlackbar(true);  }
+	else if (mode == "modemedium") { updateBlackbar(false); }
+
 }
 
 function updateThemeItems(id, mode) {
@@ -156,7 +182,7 @@ function updateSimpleFeatureItems(id) {
 }
 
 function heropath(name, mode) {
-	return "assets/hero/" + mode + "/" + name + ".jpg";
+	return "assets/hero/" + mode + "/" + name + ".png";
 }
 
 function featurepath(name, mode, theme) {
