@@ -1,7 +1,7 @@
 mode   = "mode_light"
 lastid = "theme_solarsystem"
 lastfeatureid = "monthlycalendar"
-lastsimplefeatureid = "widget"
+lastsimplefeatureid = "backup"
 
 $(document).ready(function() {
 
@@ -153,8 +153,6 @@ function updateFeatureItems(id, mode, theme) {
 }
 
 function updateSimpleFeatureItems(id) {
-
-	console.log("assets/features/" + id + "/phone.jpg")
 
 	$(".simlefeature").attr("src", "assets/features/" + id + "/phone.jpg");
 
