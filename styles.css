@@ -9,7 +9,7 @@ html {
 }
 
 body {
-	font-family:  -apple-system, BlinkMacSystemFont, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 	margin: auto;
 	text-align: left;
 	font-size: 18px;
@@ -34,7 +34,7 @@ h1 {
 
 h2 {
 	text-align: center;
-	font-weight: 200;
+	font-weight: 100;
     font-size: 36px;
     margin-top: auto;
     margin-bottom: 66px;
@@ -47,12 +47,10 @@ b {
 }
 
 h3 {
-	font-weight: 100;
-	font-size: 16px;
-	text-align: left;
-	color: #8e8e8e;
-	padding-left: 24px;
-
+	font-weight: 200;
+	font-size: 14px;
+	text-align: center;
+	color: #111;
 }
 
 h4 {
@@ -60,7 +58,6 @@ h4 {
 	margin: 0;
 	margin-bottom: 6px;
 	font-size: 18px;
-
 }
 
 h5 {
@@ -78,7 +75,7 @@ p {
 	font-family: sans-serif;
 	font-weight: 100;
 	color: #6B6B6B;;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 li {
@@ -109,7 +106,7 @@ a:hover {
 	left: 0;
 	width: 100px;
 	height: 100px;
-	background-color: black;
+	background-color: #fafafa;
 }
 
 .spacercolumn {
@@ -168,9 +165,9 @@ a:hover {
 }
 
 .leftheaderitem {
-	font-weight: 100;
-    font-size: 18px;
-    color: #6B6B6B;
+	font-weight: 800;
+    font-size: 180px;
+    color: red;
     align-items: center;
     display: flex;
 }
@@ -210,6 +207,8 @@ a:hover {
 }
 
 .heroitem {
+	font-weight: 300;
+	font-size: 16px;
 	text-align: left;
 	padding: 20px;
 	margin:5px;
@@ -225,6 +224,8 @@ a:hover {
 }
 
 .featureitem {
+	font-weight: 300;
+	font-size: 16px;
 	text-align: left;
 	padding: 20px;
 	margin:5px;
@@ -241,6 +242,8 @@ a:hover {
 }
 
 .simplefeatureitem {
+	font-weight: 300;
+	font-size: 16px;
 	text-align: left;
 	padding: 20px;
 	margin:5px;
@@ -257,6 +260,8 @@ a:hover {
 }
 
 .techfeatureitem {
+	font-weight: 300;
+	font-size: 16px;
 	text-align: left;
 	padding: 20px;
 	margin:5px;
@@ -264,6 +269,19 @@ a:hover {
 	border-radius: 24px;
 	color: #6B6B6B;
 	min-width: 200px;
+	background-color: white;
+}
+
+.download {
+	font-weight: 1000;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 100px;
+	color: white;
+	background-color: black;
+	margin-left: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .submittext {
@@ -274,51 +292,6 @@ a:hover {
 }
 
 .headerwrapper {
-}
-
-.whale {
-	background-color: #528ec8;
-	color: white;
-}
-
-.afterflow {
-	background-color: #f6ab9a;
-	color: white;
-}
-
-.hay {
-	background-color: #67b6a1;
-	color: white;
-}
-
-.peach {
-	background-color: #ef7457;
-	color: white;
-}
-
-.banana {
-	background-color: #e6c35a;
-	color: white;
-}
-
-.greensleves {
-	background-color: #236969;
-	color: white;
-}
-
-.porcelain {
-	background-color: #cbc4bc;
-	color: white;
-}
-
-.soil {
-	background-color: #b07653;
-	color: white;
-}
-
-.submarine {
-	background-color: #2f5b7e;
-	color: white;
 }
 
 @media screen and (max-width: 1094px) {

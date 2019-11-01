@@ -14,31 +14,35 @@
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/rotator.js"></script>
         <script src="js/cookie.js"></script>
+        <script src="js/confetti.js"></script>
         <script src="js/main.js"></script>
 
         <div class="blackbar"></div>
 
-
-            <div class="column" style="padding-left: 24px; padding-right: 24px;">
+            <div class="column" id="wrapper" style="padding-left: 24px; padding-right: 24px;">
                 <div class="row" style="height: 2vh;"></div>
 
                 <div id="navrow" class="row">
 
                     <div class="leftheaderitem">
-                        <a id="homelink" style="font-size: 18px;" href=""><b>Busydays</b></a>
+                         <a id="homelink" style="font-size: 18px; color: red;" href=""><b>Busydays</b></a>
                     </div>
 
                     <div class="rightheaderitem">
-                        <a href="newsletter.html">Newsletter</a>
                         <a href="javascript:window.location.href = $.rotate13('znvygb:fhccbeg@ohflqnlfncc.pbz')">Email</a>
                         <a href="https://www.iubenda.com/privacy-policy/63103694">Privacy</a>
                         <a href="tos.html">Terms</a>
-                        <a style="color: red; font-weight: 500;" href="https://testflight.apple.com/join/3DsttvDW">Download beta for iOS</a>
+                        <a class="download" href="https://apps.apple.com/us/app/busydays-time-tracking/id1449164358?l=de&ls=1" target="_blank">Download for iOS</a>
                     </div>
                 </div>
 
-                <div class="row" style="padding-top: 4vh;">
-                    <h2 id="hero">The <b>most friendly</b> time tracker</h2>
+                <div class="column" style="padding-top: 4vh;">
+                    <div class="row" style="padding-top: 4vh;">
+                        <div>
+                            <h2 id="hero">The most <b>rewarding time tracker</b></h2>
+                            <h3 style="text-align: center; margin-top: -50px; margin-bottom: 40px">What if you would actually enjoy using a time tracker because it gives you a feeling of achievement?</h3>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -46,24 +50,26 @@
                 </div>
 
 
-                <h3><b>Make it yours. Which are your favorite colors?</b>:</h3>
+                <p style="text-align: center; color: #777;" >Make it yours with your preferred color themes!</p>
 
                 <div class="itemrow">
-                    <div id="sunbath"    class="themeitem hoverdarker">⛱️ Sun</div>
-                    <div id="toychest"   class="themeitem hoverdarker">🏠 Wallpaper</div>
-                    <div id="paintpot"   class="themeitem hoverdarker">🍭 Candy</div>
-                    <div id="pencilbox"  class="themeitem hoverdarker">🖍 Marker</div>
-                    <div id="chalkhill"  class="themeitem hoverdarker">🍦 Ice Cream</div>
-                    <div id="keep"       class="themeitem hoverdarker">📝 Sticky</div>
-                    <div id="finedust"   class="themeitem hoverdarker">😷 Dust</div>
-                    <div id="coalmine"   class="themeitem hoverdarker">⛏️ Coal</div>
-                    <div id="modelight"  class="themeitem hoverdarker">🌝 Light Mode</div>
-                    <div id="modedark"   class="themeitem hoverdarker">🌝 Dark Mode</div>
-                    <div id="modemedium" class="themeitem hoverdarker">🤡 Twilight Mode</div>
+                    <div id="theme_solarsystem" class="themeitem hoverdarker">⛱️ Solar system</div>
+                    <div id="theme_wallpaper"   class="themeitem hoverdarker">🏠 60's Wallpaper</div>
+                    <div id="theme_textmarker"  class="themeitem hoverdarker">🖍 Text Marker</div>
+                    <div id="theme_icecream"    class="themeitem hoverdarker">🍦 Ice Cream</div>
+                    <div id="theme_stickynote"  class="themeitem hoverdarker">📝 Sticky Note</div>
+                    <div id="theme_dust"        class="themeitem hoverdarker">😷 Dust</div>
+                </div>
+
+
+                <div class="itemrow">
+                    <div id="mode_light"  class="themeitem hoverdarker">🌝 Light Mode</div>
+                    <div id="mode_dark"   class="themeitem hoverdarker">🌚 Dark Mode</div>
+                    <div id="mode_medium" class="themeitem hoverdarker">🤡 Twilight Mode</div>
                 </div>
 
                 <div class="spacerrow"></div>
-                <h3><b>Now seriously: How on earth can a timetracker be fun?</b>:</h3>
+                <p style="text-align: center; color: #777;" >What makes time tracking with Busydays special?</p>
 
                 <div class="row">
                     <div id="succinct" class="heroitem">
@@ -83,12 +89,13 @@
 
                     <div id="friendly" class="heroitem">
                         <h4>🌻 Friendly</h4>
-                        Busydays makes time tracking a pleasant experience. No dreadful lists. Also: Emojis and dark mode!
+                        Busydays turns a chore into a pleasant and motivating experience. With achievements, emojis, a vivid user interface and color themes.
                     </div>
                 </div>
 
                 <div class="spacerrow"></div>
-                <h3><b>More features than you can throw a stick at ...</b>:</h3>
+                <div class="spacerrow"></div>
+                <div class="spacerrow"></div>
 
                 <div class="row">
 
@@ -102,12 +109,12 @@
 
                         <div id="monthlycalendar" class="featureitem hoverdarker">
                             <h4>📅 Monthly calendar</h4>
-                            Provides an instant overview of how much time you spent on which project. Everything visible in the calendar can be exported as spreadsheets.
+                            Provides an instant overview of how much time you spent on each of your projects. Everything visible in the calendar can be exported into a spreadsheet.
                         </div>
 
-                        <div id="timer" class="featureitem hoverdarker">
-                            <h4>🏃‍♂️ Instant timers</h4>
-                            A timer is ready to run in a split second. Just press start. Enter additional data whenever convenient or desired.
+                        <div id="monthlyhours" class="featureitem hoverdarker">
+                            <h4>⌛ Hours at a glance</h4>
+                            An even more precise overwiew of where you spent your hours each day.
                         </div>
 
                         <div id="tasks" class="featureitem hoverdarker">
@@ -140,7 +147,7 @@
                     <div class="column" style="justify-content: center;">
 
                         <div id="widget" class="simplefeatureitem hoverdarker">
-                            <h4>💡 Widget</h4>
+                            <h4>💡 Widget (Coming soon!)</h4>
                             Manage timers super quickly from your dashboard. It's even possible to access Busydays timers from the lockscreen when configured approriately via iOS settings.
                         </div>
 
@@ -161,7 +168,7 @@
 
                         <div id="backup" class="simplefeatureitem hoverdarker">
                             <h4>📦 Backup</h4>
-                            Your data lives in iCloud®. So you can even delete and reinstall the app and everything reappears magically. You get automatically saved timesheets on your iCloud® drive on top of that.
+                            Your data lives in iCloud®. So you can even delete and reinstall the app and everything reappears magically. You get automatically saved and always up to date timesheets on your iCloud® drive on top of that.
                         </div>
                     </div>
 
@@ -169,7 +176,8 @@
                 </div>
 
                 <div class="spacerrow"></div>
-                <h3><b>Technical terms galore</b></h3>
+                <div class="spacerrow"></div>
+                <div class="spacerrow"></div>
 
                 <div class="row">
                     <div class="techfeatureitem">
@@ -216,7 +224,7 @@
 
                 <div class="techfeatureitem">
                     <h4>🗝️ Busydays respects your privacy</h4>
-                    Your data never leaves Apple's® servers. Busydays only uses Apple's iCloud® infrastructure to synchronize records between your devices and to export timesheets to your iCloud Drive®.
+                    Your data never leaves Apple's® servers. Busydays only uses Apple's iCloud® infrastructure to synchronize records between your devices and to export timesheets to your iCloud Drive®. No one except you has access to your data.
                 </div>
 
                 <div class="row" style="text-align: center; padding: 32px; padding-top: 36px;">
