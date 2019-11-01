@@ -165,9 +165,9 @@ a:hover {
 }
 
 .leftheaderitem {
-	font-weight: 100;
-    font-size: 18px;
-    color: #6B6B6B;
+	font-weight: 800;
+    font-size: 180px;
+    color: red;
     align-items: center;
     display: flex;
 }
@@ -270,6 +270,18 @@ a:hover {
 	color: #6B6B6B;
 	min-width: 200px;
 	background-color: white;
+}
+
+.download {
+	font-weight: 1000;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 100px;
+	color: white;
+	background-color: black;
+	margin-left: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .submittext {
