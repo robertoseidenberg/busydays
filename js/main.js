@@ -4,6 +4,7 @@ lastfeatureid = "monthlycalendar"
 lastsimplefeatureid = "backup"
 
 $(document).ready(function() {
+	mixpanel.track("Pageview");
 
 	w = screen.width
 	h = screen.height
