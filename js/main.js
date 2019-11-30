@@ -1,9 +1,10 @@
-mode   = "light"
-lastid = "sunbath"
+mode   = "mode_light"
+lastid = "theme_solarsystem"
 lastfeatureid = "monthlycalendar"
-lastsimplefeatureid = "widget"
+lastsimplefeatureid = "backup"
 
 $(document).ready(function() {
+	mixpanel.track("Pageview");
 
 	w = screen.width
 	h = screen.height
@@ -17,27 +18,25 @@ $(document).ready(function() {
 	 	updateCSSForMobile();
 	}
 
-
 	_mode   = Cookies.get('mode');
 	_lastid = Cookies.get('lastid');
 	if (_mode   !== undefined) { mode   = _mode;   }
 	if (_lastid !== undefined) { lastid = _lastid; }
 
+	confetti();
+
 	$(".themeitem").click(function(){
 
-		if (this.id == "mode") {
-			mode == "light" ? mode = "dark" : mode = "light";
-			Cookies.set('mode', mode);
-			updateMode(mode);
-
+		if ((this.id == "mode_light") || (this.id == "mode_dark") || (this.id == "mode_medium")) {
+			Cookies.set('mode', this.id);
+      mode = this.id;
+      updateMode(this.id);
 		} else {
-			lastid = this.id
-			Cookies.set('lastid', lastid);
-		}
+      lastid = this.id
+    }
 
 		updateThemeItems(lastid, mode);
-		updateFeatureItems(lastfeatureid, mode, lastid);
-    	return false;
+    return false;
 	});
 
 	$(".featureitem").click(function(){
@@ -58,10 +57,20 @@ $(document).ready(function() {
 	updateSimpleFeatureItems(lastsimplefeatureid);
 });
 
+$(window).on('resize', function(){
+	var items = $("#simplefeatureitems");
+	var img = $("#simplefeatureimg");
+	if ($( window ).width() > 1094) {
+		img.insertAfter(items);
+	} else {
+		img.insertBefore(items);
+	}
+});
+
 function updateCSSForMobile() {
 
 	$("body").css("font-size", "24px");
-	$("h3").css("font-size", "28px").css("text-align", "center").css("padding-left","0");
+	$("h3").css("font-size", "28px")
 	$("h4").css("font-size", "24px").css("font-weight", 400);
 	$("#navrow").addClass("techfeatureitem");
 
@@ -74,51 +83,60 @@ function updateCSSForMobile() {
 }
 
 function updateMode(mode) {
-	if (mode == "dark") { $("#mode").text("🌚 Dark mode") .css("background-color", "#FBFAFA"); }
-	else				{ $("#mode").text("🌝 Light mode").css("background-color", "#FBFAFA"); }
+	var phone = $("#phoneimage");
+  var top = phone.offset().top;
+  var height = phone.height();
+  var topbar = height * 0.283;
+
+  ["mode_light", "mode_dark", "mode_medium"].forEach(function (item, index) {
+    $("#"+item).css("border", "1px solid #EDEDED");
+  });
+
+  $("#"+mode).css("border", "1px dashed #DD4C4F");
+
+  $(".blackbar").css("left", 0);
+  $(".blackbar").css("width", window.innerWidth);
+  $(".blackbar").css("height", top + topbar);
+  $(".blackbar").css("z-index", -1);
 }
 
 function updateThemeItems(id, mode) {
 
 	$("#phoneimage").attr("src", heropath(id, mode));
 
-	["#sunbath", "#toychest", "#paintpot", "#pencilbox", "#chalkhill", "#keep", "#finedust", "#coalmine"].forEach(function (item, index) {
-		$(item).css("border", "1px solid #EDEDED");
+
+	["theme_solarsystem", "theme_wallpaper", "theme_textmarker", "theme_icecream", "theme_stickynote", "theme_dust"].forEach(function (item, index) {
+		$("#"+item).css("border", "1px solid #EDEDED");
 	});
 
 	$("#"+id).css("border", "1px dashed #DD4C4F");
 
-	if (id == "sunbath") {
+	if (id == "theme_solarsystem") {
 		$('#succinct')	  .css("backgroundColor", "#ff414c").css("color", "white");
 		$('#frictionless').css("backgroundColor", "#7da00e").css("color", "white");
 		$('#ubiquitous')  .css("backgroundColor", "#7e5ab7").css("color", "white");
 		$('#friendly')	  .css("backgroundColor", "#fc6602").css("color", "white");
-	} else if (id == "toychest"  ) {
+	} else if (id == "theme_wallpaper"  ) {
 		$('#succinct')	  .css("backgroundColor", "#ef7457").css("color", "white");
 		$('#frictionless').css("backgroundColor", "#2f5b7e").css("color", "white");
 		$('#ubiquitous')  .css("backgroundColor", "#e6c35a").css("color", "white");
 		$('#friendly')	  .css("backgroundColor", "#236969").css("color", "white");
-	} else if (id == "paintpot") {
-		$('#succinct')	  .css("backgroundColor", "#81bf40").css("color", "white");
-		$('#frictionless').css("backgroundColor", "#67a3bc").css("color", "white");
-		$('#ubiquitous')  .css("backgroundColor", "#d0915a").css("color", "white");
-		$('#friendly')	  .css("backgroundColor", "#c697c0").css("color", "white");
-	} else if (id == "pencilbox") {
+	} else if (id == "theme_textmarker") {
 		$('#succinct')	  .css("backgroundColor", "#f39831").css("color", "white");
 		$('#frictionless').css("backgroundColor", "#62aa58").css("color", "white");
 		$('#ubiquitous')  .css("backgroundColor", "#d77d9e").css("color", "white");
 		$('#friendly')	  .css("backgroundColor", "#5883af").css("color", "white");
-	} else if (id == "chalkhill") {
+	} else if (id == "theme_icecream") {
 		$('#succinct')	  .css("backgroundColor", "#9977b4").css("color", "white");
 		$('#frictionless').css("backgroundColor", "#f497aa").css("color", "white");
 		$('#ubiquitous')  .css("backgroundColor", "#f9b48a").css("color", "white");
 		$('#friendly')	  .css("backgroundColor", "#87b8e1").css("color", "white");
-	} else if (id == "keep") {
+	} else if (id == "theme_stickynote") {
 		$('#succinct')	  .css("backgroundColor", "#f28b84").css("color", "#444");
 		$('#frictionless').css("backgroundColor", "#cdff90").css("color", "#444");
 		$('#ubiquitous')  .css("backgroundColor", "#aec9fa").css("color", "#444");
 		$('#friendly')	  .css("backgroundColor", "#fff476").css("color", "#444");
-	} else if (id == "finedust") {
+	} else if (id == "theme_dust") {
 		$('#succinct')	  .css("backgroundColor", "#ae6177").css("color", "white");
 		$('#frictionless').css("backgroundColor", "#7096a7").css("color", "white");
 		$('#ubiquitous')  .css("backgroundColor", "#c6a476").css("color", "white");
@@ -144,8 +162,6 @@ function updateFeatureItems(id, mode, theme) {
 
 function updateSimpleFeatureItems(id) {
 
-	console.log("assets/features/" + id + "/phone.jpg")
-
 	$(".simlefeature").attr("src", "assets/features/" + id + "/phone.jpg");
 
 	["widget", "timesheets", "backup", "print", "export"].forEach(function (item, index) {
@@ -156,9 +172,9 @@ function updateSimpleFeatureItems(id) {
 }
 
 function heropath(name, mode) {
-	return "assets/hero/" + mode + "/" + name + ".jpg";
+	return "assets/hero/" + mode.substr(5) + "_" + name.substr(6) + ".png";
 }
 
-function featurepath(name, mode, theme) {
-	return "assets/features/" + name + "/" + mode + "/" + theme + ".jpg";
+function featurepath(name) {
+	return "assets/features/" + name + ".jpg";
 }
