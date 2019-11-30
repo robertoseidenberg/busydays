@@ -58,6 +58,13 @@ $(document).ready(function() {
 });
 
 $(window).on('resize', function(){
+	var items = $("#simplefeatureitems");
+	var img = $("#simplefeatureimg");
+	if ($( window ).width() > 1094) {
+		img.insertAfter(items);
+	} else {
+		img.insertBefore(items);
+	}
 });
 
 function updateCSSForMobile() {
